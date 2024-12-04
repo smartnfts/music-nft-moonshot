@@ -60,4 +60,7 @@ module.exports = {
       },
     ]
   },
+  sourcify: {
+    enabled: true // Enable Sourcify verification
+  }
 };
