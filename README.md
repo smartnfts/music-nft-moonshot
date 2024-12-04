@@ -65,16 +65,16 @@ npx hardhat run scripts/deploy.js --network energiTestnet
 This will deploy the contract to the Energi Testnet. You can change `energiTestnet` to `energiMainnet` if deploying to the mainnet.
 
 ### Verify the Contract
-To verify the contract on the Energi Block Explorer:
+To verify the contract on the Energi Block Explorer run the following command:
 
-Use the following curl command to get the deployed bytecode from the blockchain:
 ```bash
-./bin/verify.sh
+npx hardhat verify --network <network_name> <contract_address> "<arg1>,<arg2>,<arg3>"
 ```
 
-Manually compare the bytecode with the locally compiled bytecode found in `artifacts/contracts/MusicNFT.sol/MusicNFT.json`.
-
-If the bytecodes match, the contract is successfully deployed and verified.
+**Example:**
+```bash
+npx hardhat verify --network energiTestnet 0x0da0614A54A993398a2fa01139a235378d042fA4 "MusicNFT" "MNFT" 10000 "0xd66Ee1691Ffe9F7d476Afc5d90C38e41cB44DC3E"
+```
 
 ### Minting NFTs
 To mint an NFT, use the following script:
