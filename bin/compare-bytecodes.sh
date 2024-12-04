@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# Script to compare the deployed bytecode to the local compiled bytecode
+#
 
 . .env
 echo "Verifying contract: ${MUSIC_NFT_ADDRESS}"
@@ -10,9 +13,9 @@ echo "Getting bytecode from chain..."
 CHAINBYTECODE=$(curl -s -X POST -H "Content-Type: application/json" --data "{\"jsonrpc\":\"2.0\",\"method\":\"eth_getCode\",\"params\":[\"${MUSIC_NFT_ADDRESS}\",\"latest\"],\"id\":1}" ${RPC_URL} | jq -r '.result')
 #echo "Chain Bytecode: ${CHAINBYTECODE}"
 
-# Get the local bytecode using the ethers.js script
+# Get the local bytecode using the script
 echo "Getting local bytecode..."
-LOCALBYTECODE=$(node scripts/ethers.js | awk '{print $3}')
+LOCALBYTECODE=$(node scripts/get-bytecode.js | awk '{print $3}')
 #echo "Local Bytecode: ${LOCALBYTECODE}"
 
 # String comparison
