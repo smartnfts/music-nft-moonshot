@@ -93,4 +93,4 @@ Once deployed, your contract will be available at the address specified in the `
 - **Ether Payment:** When users mint NFTs, they will need to pay the minting fee in NRG.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE.txt) file for details.
