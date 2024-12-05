@@ -12,13 +12,30 @@ async function main() {
     MusicNFTAddress,
     [
       "function mintNFT(address recipient, string memory tokenURI) public payable returns (uint256)",
-      "function owner() public view returns (address)"
+      "function owner() public view returns (address)",
+      "function ownerOf(uint256 tokenId) public view returns (address)",
+      "function maxSupply() public view returns (uint256)"
     ],
     wallet
   );
 
-  const tokenId = 1; // Set desired token ID or generate dynamically
-  const tokenURI = `${process.env.BASEURI}${tokenId}`; // Assuming metadata follows this path
+  // Get max supply to prevent infinite loop
+  const maxSupply = (await MusicNFT.maxSupply()).toNumber();
+
+  // Find the next available token ID
+  let tokenId = 1;
+  while (tokenId <= maxSupply) {
+    try {
+      // Try to get the owner of the token
+      await MusicNFT.ownerOf(tokenId);
+      tokenId++;
+    } catch (error) {
+      // If ownerOf throws an error, this token ID is not minted yet
+      break;
+    }
+  }
+
+  const tokenURI = `${tokenId}`;
 
   const mintPrice = ethers.utils.parseEther("0.05"); // Should match the contract's mint price
 
@@ -33,7 +50,7 @@ async function main() {
   const mintTx = await MusicNFT.mintNFT(wallet.address, tokenURI, { value });
   await mintTx.wait();
 
-  console.log(`NFT minted successfully! TokenID: ${tokenId} URI: ${tokenURI}`);
+  console.log(`NFT minted successfully! TokenID: ${tokenId} URI: ${process.env.BASEURI}${tokenURI}`);
 }
 
 main().catch((error) => {

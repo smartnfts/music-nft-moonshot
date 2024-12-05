@@ -73,7 +73,7 @@ npx hardhat verify --network <network_name> <contract_address> "<arg1>,<arg2>,<a
 
 **Example:**
 ```bash
-npx hardhat verify --network energiTestnet 0x0da0614A54A993398a2fa01139a235378d042fA4 "Moonshot by Violetta Zironi Test" "MSVZ" 2500 "0xd66Ee1691Ffe9F7d476Afc5d90C38e41cB44DC3E"
+npx hardhat verify --network energiTestnet 0xd1985BBd1F0B6D0276C0281F2dBc8255Ed95ae53 "Moonshot by Violetta Zironi Test" "MSVZ" 2500 "0xd66Ee1691Ffe9F7d476Afc5d90C38e41cB44DC3E"
 ```
 
 ### Minting NFTs
