@@ -33,8 +33,8 @@ Before getting started, ensure you have the following installed:
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/smartnfts/music-nft-erc721.git
-cd music-nft-erc721
+git clone https://github.com/smartnfts/music-nft-erc721.git music-nft-moonshot
+cd music-nft-moonshot
 npm install
 ```
 
@@ -73,7 +73,7 @@ npx hardhat verify --network <network_name> <contract_address> "<arg1>,<arg2>,<a
 
 **Example:**
 ```bash
-npx hardhat verify --network energiTestnet 0x0da0614A54A993398a2fa01139a235378d042fA4 "MusicNFT" "MNFT" 10000 "0xd66Ee1691Ffe9F7d476Afc5d90C38e41cB44DC3E"
+npx hardhat verify --network energiTestnet 0x0da0614A54A993398a2fa01139a235378d042fA4 "Moonshot by Violetta Zironi Test" "MSVZ" 2500 "0xd66Ee1691Ffe9F7d476Afc5d90C38e41cB44DC3E"
 ```
 
 ### Minting NFTs

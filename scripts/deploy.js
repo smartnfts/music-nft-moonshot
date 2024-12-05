@@ -9,10 +9,10 @@ async function main() {
 
   const MusicNFT = await ethers.getContractFactory("MusicNFT");
   const musicNFT = await MusicNFT.deploy(
-    "MusicNFT",              // Name
-    "MNFT",                  // Symbol
-    10000,                   // Max Supply
-    deployer.address         // Initial Owner
+    "Moonshot by Violetta Zironi Test",  // Name
+    "MSVZ",                              // Symbol
+    2500,                                // Max Supply
+    deployer.address                     // Initial Owner
   );
 
   await musicNFT.deployed();
