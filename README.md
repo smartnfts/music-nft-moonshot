@@ -68,8 +68,11 @@ This will deploy the contract to the Energi Testnet. You can change `energiTestn
 To verify the contract on the Energi Block Explorer run the following command:
 
 ```bash
-npx hardhat verify --network <network_name> <contract_address> "<arg1>,<arg2>,<arg3>"
+npx hardhat verify --network <network_name> <contract_address> "<arg1>" <arg2> "<arg3>"
 ```
+
+> [!NOTE]
+> `arg` in quotes are of type string. Do not need to put quotes for type decimal/number.
 
 **Example:**
 ```bash
@@ -77,6 +80,8 @@ npx hardhat verify --network energiTestnet 0xd1985BBd1F0B6D0276C0281F2dBc8255Ed9
 ```
 
 ### Minting NFTs
+
+#### Single Mint
 To mint an NFT, use the following script:
 
 ```bash
@@ -84,8 +89,16 @@ npx hardhat run scripts/mint-nft.js --network energiTestnet
 ```
 The script will mint a new NFT for the user and will charge the minting fee.
 
-## Contract Address
-Once deployed, your contract will be available at the address specified in the `.env` file (MUSIC_NFT_ADDRESS). Make sure to update this in your `.env` if the address changes after deployment.
+#### Multiple Mint
+To mint multiple NFTs, add your private key in PRIVATE_KEY (line 10) on the bash script `bin/mint.sh`.
+
+Update line 13, to specify how many NFTs you want to mint.
+
+After saving the changes, run the following:
+
+```bash
+bin/mint.sh
+```
 
 ## Additional Notes
 - **Minting Fee:** The minting fee is set in the contract and can be updated by the contract owner. The fee is required by users who wish to mint NFTs.
